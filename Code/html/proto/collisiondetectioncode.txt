@@ -1,0 +1,55 @@
+Axis Aligned Collision Detection
+collsion (image1, image2)
+{
+	var Image1HalfWidth = Image1.width / 2;
+	var Image2HalfWidth = Image2.width / 2;
+	var hOffset = abs((Image1.x + Image1HalfWidth) - (Image2.x + Image2Halfwidth))
+	if(hOffset > Image1HalfWidth + Image2HalfWidth)
+	{
+		//no vertical overlap
+		return false;
+	}
+	var Image1HalfHeight = Image1.height / 2;
+	var Image2HalfHeight = Image2.height / 2;
+	var vOffset = abs((Image1.y + Image1HalfHeight) - (Image2.y + Image2Halfheight))
+	if(vOffset > Image1HalfHeight + Image2HalfHeight)
+	{
+		//no overlap on horizontal
+		return false;
+	}
+	return true;
+}
+
+
+
+
+
+//old inefficient code
+{
+	//we have the x, y, width, height of both images.
+	var image1Right = image1.x + image1.width;
+	var image2Right = image2.x + image2.width;
+	var image1Bottom = image1.y + image1.height;
+	var image2Bottom = image2.y + image2.height;
+	
+	if(((image1.x <= image2Right && image1.x >= image2.x) ||
+		(image1Right <= image2Right && image1Right >= image2.x)) &&
+		((image1.y <= image2Bottom && image1.y >= image2.y) ||
+		(image1Bttomg <= image2Bottom && image1Bottomg >= image2.y)))
+	{
+		return true;
+	}
+	return false;
+}
+collsion(image1, image2)
+{
+	var dx = image1.x - image2.x;
+	var dy = image1.y - image2.y;
+	var d = Math.sqrt( dx * dx + dy * dy);
+	
+	if(d <= (image1.radius + image2.radius))
+	{
+		return true;
+	}
+	return false;
+}

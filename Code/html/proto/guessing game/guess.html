@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8"/>
+		<title>Guessing Game</title>
+	</head>
+	<body>
+		<p id = "output"> I am thinking of a number between 1 and 100</p>
+		<input id = "input" type = "text" placeholder = "Enter Your Guess"/>
+		<button>Submit Guess</button>
+		<p id = "error" style = "color:red"></p>
+		<script type = "text/javascript">
+		var mysteryNumber = Math.floor(Math.random() * 100) + 1;
+console.log("mystery Number" + " " + mysteryNumber);
+		var playerGuess = 0;
+		var button = document.querySelector("button");
+		button.style.cursor = "pointer";
+		button.addEventListener("click", clickHandler, false);
+		
+		var input = document.querySelector("#input");
+		var output = document.querySelector("#output");
+		var error = document.querySelector("#error");
+		var guesses = 0;
+		var MAX_GUESSES = 7;
+		var gameOver = false;
+		
+		
+		
+		function clickHandler()
+		{
+			playGame();
+		}
+		function gameDone()
+		{
+			button.removeEventListener("click", clickHandler);
+				button.innerHTML = "Play Again?";
+				button.addEventListener("click", newGame, false);
+				return;
+		}
+			
+		function playGame()
+		{
+			var str = input.value;
+			str = str.trim();
+			if (isNaN(str) == true)
+			{
+				error.innerHTML = "Text is not a number.";
+				input.value = "";
+				return;
+			}
+			if(str === "")
+			{
+				error.innerHTML = "";
+				return;
+			}
+			
+			guesses++;
+			//Check if game has been lost.
+			if(guesses > MAX_GUESSES)
+			{
+				output.innerHTML = "YOU LOSE! The mystery number was" + " " + mysteryNumber;
+				gameDone;
+			}
+			playerGuess = parseInt(str);
+			if (playerGuess < 1 || playerGuess > 100)
+			{
+				error.innerHTML = "Value is out of range.";
+				input.value = "";
+				return;
+			}
+			error.innerHTML = "";
+			
+			if (playerGuess < mysteryNumber)
+			{
+				output.innerHTML = "That's too low. You have used" + " " + guesses + " " + "guesses";
+				gameOver = true;
+				return;
+			}
+			if (playerGuess > mysteryNumber)
+			{
+				output.innerHTML = "That's too high. You have used" + " " + guesses + " " + "guesses";
+				gameOver = true;
+				return;
+			}
+			output.innerHTML = "That's correct! You guessed the number in" + " " + guesses + " " + "guesses";
+			gameDone();
+			
+		}
+		function newGame()
+		{
+			if(gameOver === false)
+			{
+				return;
+			}
+			gameOver = false;
+			mysteryNumber = Math.floor(Math.random() * 100) + 1;
+console.log("mystery Number" + " " + mysteryNumber);
+			playerGuesses = 0;
+			button.removeEventListener("click", newGame, false);
+			button.addEventListener("click", clickHandler, false);
+			button.innerHTML = "Submit Guess";
+			output.innerHTML ="I am thinking of a number between 1 and 100";
+			input.value = "";
+			guesses = 0;
+		}	
+			
+		</script>
+		
+		
+	</body>
+</html>

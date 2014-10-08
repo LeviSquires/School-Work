@@ -1,0 +1,49 @@
+
+#include <iostream>
+#include "prototypes.h"
+#include "templates.h"
+
+using std::cout;
+using std::endl;
+
+
+int main()
+{
+    cout << endl;
+    int numb1 = askForInt("Enter a number to be added: ");
+    cout << numb1 << "'s bit pattern is:" << endl;
+    ShowBits(std::cout, numb1);
+
+    int numb2 = askForInt("\nEnter another number to be added: ");
+    cout << numb2 << "'s bit pattern is:" << endl;
+    ShowBits(std::cout, numb2);
+
+    int dx = 0; // represents the dx register -- where the answer goes
+
+    //Implement the bit-wise adding here...
+	int a = (numb1 & numb2);
+	int b = (numb1 ^ numb2);
+	int answer;
+
+	while (a != 0)
+	{
+		a <<= 1; //Shifts left by 1
+		answer = a ^ b;
+		a &= b;
+		b = answer;
+	}
+	dx = answer;
+
+
+    cout << "\nThe result of addition is: " << dx << endl;
+    cout << "Bit pattern is:" << endl;
+    ShowBits(std::cout, dx);
+    cout << endl;
+
+	std::cin.get();
+    return 0;
+
+}
+
+
+

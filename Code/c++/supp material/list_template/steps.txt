@@ -1,0 +1,23 @@
+Steps to convert the string list class to a template class
+
+1) Move all functions in the template classes from the .cpp files to the .h 
+   files.  You can remove these .cpp files from the project.
+2) In the Node class, declare it a template class and change the string data to 
+   the token you have chosen to represent the type of data. Change all getters,
+   setters and constructors that use strings (or references to strings or const
+   strings) to the same token.  Do this in both the declaration and definitions
+   for the class.
+3) Declare the friend relationship as a template.
+4) Declare each member function to be a template function.
+5) In the List class, declare it as a template class and change any string,
+   reference to string or const string to the token chosen to represent the
+   class.
+6) In the List class, change each instance of "Node" to a Node of the token 
+   chosen to represent the data type for the list.
+7) Declare each member function to be a template function.
+8) Be sure to specify what data type the list represents when you declare and 
+   use the template class.
+   
+   
+
+             

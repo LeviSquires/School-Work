@@ -1,0 +1,20 @@
+C++ Assignment 9
+
+Using the list class we developed in class, make the following modifications:
+
+1) Change the data to a std::string variable.
+2) Make the return types for the data getters in both List and Node classes 
+   references to const.  Make the arguments for the Node ctor and the List data 
+   setters references to const.
+3) Answer the question: Why did we do what we did in item 2)?
+4) Implement a copy ctor and assignment operator with deep copy on both the List
+   and Node classes so that using these function does not end up with an 
+   inglorious crash.
+5) Wrap your solution into a Visual Studio Solution/Project.  Make sure to submit 
+   just the files requested   
+   
+Bonus:
+Submit a working Unix Makefile. Watch your line endings.   
+
+   
+       

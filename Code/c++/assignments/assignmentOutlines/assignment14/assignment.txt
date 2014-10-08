@@ -1,0 +1,39 @@
+C++ Assignment 14 & 15
+
+Starting with the Date class example we looked at today, Implement the following:
+
+1) Less than operator (<)//done
+2) Less than or equals operator (<=)//done
+3) Plus assign operator that adds days (+=)
+4) Minus assign operator that subtracts days (-=)
+5) Minus operator that takes two Date objects and return the difference in number of days.
+6) Implement a postfix and prefix decrement operator (--).
+7) An insertion operator (<<) that inserts the results of the to string function to an ostream object. 
+8) Uncomment the test code in the main function that tests all your operators.
+
+NOTE: Start with an existing Date project.
+NOTE: Submit you source code, readme.txt, the .sln file and the .vcxproj file.
+
+Modify the class so
+that an invalid date throws a custom exception.  The custom exception is be a 
+subclass of one of the standard c++ exception classes.
+
+1) Implement a custom exception class that is a subclass of a standard c++
+   exception classes.  Choose an appropriate c++ class as the base class
+2) Use this custom exception class in the Date class and give the exception 
+   object an appropriate error message.
+3) Modify the main function so that it:
+   - puts all Date object creation in a try block
+   - has an appropriate catch block for the try block that handles the exception
+     and prints the appropriate error message using the exception::what() 
+     function.
+   - Attempt to create invalid date objects in the try block.
+   
+Hints:
+1) Throw the exceptions in the isValid() function when the class checks its 
+   validity.  You may find it best to alter the return type of the isValid() 
+   function ('to what?' is the question).  Look at the supp material 
+   implementation of exceptions for a big hint. 
+
+
+     

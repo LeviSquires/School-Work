@@ -1,0 +1,28 @@
+#############################################################################
+# Makefile for building: date_test program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = clang++
+CXXFLAGS      = -c  -Wall
+LINK          = clang++
+LINKFLAGS     =  -o 
+TARGET        = date_test
+
+OBJECTS = test.o date.o functions.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+test.o : test.cpp
+	$(CXX) $(CXXFLAGS)  test.cpp 
+	
+date.o : date.cpp
+	$(CXX) $(CXXFLAGS)  date.cpp
+
+functions.o : functions.cpp
+	$(CXX) $(CXXFLAGS)  functions.cpp
+
+clean:
+	rm -f $(TARGET) $(OBJECTS)

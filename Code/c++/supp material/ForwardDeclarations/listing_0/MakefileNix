@@ -1,0 +1,24 @@
+#Forward Declaration code Makefile (Unix/Linux)
+
+CPP			= clang++ 
+CPP_FLAGS	= -c -Wall
+LINK		= clang++
+TARGET		= demo_game
+LINK_FLAGS	= -o$(TARGET)
+OBJECTS		= main.o chesspiece.o square.o
+
+$(TARGET): $(OBJECTS)
+	$(LINK) $(LINK_FLAGS) $(OBJECTS)
+
+main.o: main.cpp
+	$(CPP) $(CPP_FLAGS) main.cpp
+
+chesspiece.o: chesspiece.cpp
+	$(CPP) $(CPP_FLAGS) chesspiece.cpp
+
+square.o: square.cpp
+	$(CPP) $(CPP_FLAGS) square.cpp
+
+clean:
+	rm -f $(OBJECTS) $(TARGET) *core*
+	

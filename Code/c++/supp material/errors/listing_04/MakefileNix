@@ -1,0 +1,22 @@
+#############################################################################
+# Makefile for building exception program Unix/Mac  (GNU C++ Compiler)
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = exception
+
+OBJECTS = exception.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(LINKFLAGS) $(TARGET) $(OBJECTS)
+	
+exception.o : exception.cpp
+	$(CXX) $(CXXFLAGS)  exception.cpp 
+
+clean:
+	rm -f *.o $(TARGET) *.core

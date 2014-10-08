@@ -1,0 +1,38 @@
+General Notes on Assignments.
+
+1) There will be 20 assignments in C++.  Most of these will be programming, but some will be pseudo-code and one will be an analysis in Microsft Excel or the Open Office spreadsheet.
+
+2) All submissions will be made through the Subversion server.  You have a 
+directory on the server under:
+
+https://svn.trioscollege.com/svn/triOS/trunk/London/cpp/students
+or:
+https://svn.trioscollege.com/svn/triOS/trunk/Kitchener/cpp/students
+
+
+3) Make sure that you organize your subversion directory in a logical manner 
+like:
+Assignment01
+Assignment02
+Assignment03
+...
+
+4) Make sure you include a text file called readme.txt that explains: 
+- How to build the example.
+- Your pseudo-code
+- What you accomplished in the assignment.
+- What you didn't accomplish.
+
+5)  Make sure that you include the following files
+- all .cpp files
+- all .h files
+- the readme.txt
+- the Makefile (if required)
+- the project (.vcprojx) and solution (.sln) file (if the assignment uses the 
+  Visual Studio environment)
+- any other file as specified.
+
+6) Do NOT include other files like *.obj, *.o, *.exe  Debug directory, Release directory, ipch 
+directory or any of the dozens of that are produced by Visual Studio.
+
+

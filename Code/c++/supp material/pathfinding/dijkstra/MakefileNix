@@ -1,0 +1,34 @@
+################################
+#  Unixs Makefile for Dijkstra's Algorithm
+################################
+
+COMPILER = g++
+COMPILE_FLAGS = -c -Wall -I/usr/share/tclap-1.2.1/include
+TARGET = dijkstra
+LINKER = g++
+LINK_FLAGS = -o$(TARGET)
+OBJ_FILES = cell.o main.o board.o randgen.o path.o
+
+
+$(TARGET): $(OBJ_FILES)
+	$(LINKER) $(LINK_FLAGS) $(OBJ_FILES)
+
+cell.o: cell.cpp
+	$(COMPILER) $(COMPILE_FLAGS) cell.cpp
+
+main.o : main.cpp
+	$(COMPILER) $(COMPILE_FLAGS) main.cpp
+
+board.o : board.cpp
+	$(COMPILER) $(COMPILE_FLAGS) board.cpp
+	
+randgen.o : randgen.cpp
+	$(COMPILER) $(COMPILE_FLAGS) randgen.cpp
+
+path.o : path.cpp
+	$(COMPILER) $(COMPILE_FLAGS) path.cpp
+
+
+clean:
+	rm  -f $(OBJ_FILES) $(TARGET) *core* 
+	

@@ -1,0 +1,20 @@
+C++ Assignment 16
+
+Based on the Matrix class we have fleshed out and the answer to assignment 10, 
+implement the function GJElimination, that will perform a full Gauss Jordan 
+elimination on the matrix.
+
+Hint 1: Implement the functions as described in the accompanied pseudo-code. 
+        Note: pseudo-code is not C++ but it needs to be translated to C++
+Hint 2: Implement exception handling if the parameters to a function are 
+        invalid.  Use an existing C++ exception class or derive from such a 
+        class.  
+Hint 3: Be sure to use fuzzyEqual(...) when testing for equality between
+        doubles.
+Hint 4: It would be a good thing to make sure that '-0.000000' shows up as 
+        just '0.000000'.
+
+Bonus:  Implement a function: double GetDeterminant()const that returns the 
+        determinant of the matrix.  Use the cofactors and minors approach
+        (recursion is your friend).
+ 

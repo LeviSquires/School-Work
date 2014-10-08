@@ -1,0 +1,15 @@
+C++ Assignment 5 
+
+Adjust the program that implements and uses a recursive version of the fibonacci 
+function to use an iterative version. We discussed that any function that uses
+recursion can be rewritten using iteration.  Rewrite the fibonacci function to
+be iterative. 
+
+Note: only the function needs to be rewritten. 
+
+Discuss the advantages and disadvatages of using recursion/or iteration.
+
+Bonus: create appropriate Makefiles for this project.  (hint: they will be small)
+
+
+       

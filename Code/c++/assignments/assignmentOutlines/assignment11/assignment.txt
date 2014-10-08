@@ -1,0 +1,45 @@
+C++ Assignment 11
+
+Write the pseudo-code for a Gauss Jordan Elimination on a matrix to solve a 
+linear system.
+
+Assume the following:
+   - The determinant of the unaugmented, n X n matrix has been found to be not
+     0, so the matrix is not singular.
+   - The matrix you are performing this operation on is augnmented so the 
+     dimensions are n X (n + 1)
+     
+Hints:
+   - Make sure you understand the three operations of GJ Elimination.
+   - Write individual functions for each of the three operations
+   - Write any helper functions you might think are necessary.
+   - Google is your friend.
+   - Here are some videos that will explain further:
+
+       I usually don't include Wikipedia as a reference, but for stuff like 
+       this, it is actually not bad.  This page has a graphic representation 
+       of solving a 3 x 3 system, several good examples and some useful links.
+       Pay special attention to the section titled "Row Reduction"  
+       http://en.wikipedia.org/wiki/System_of_linear_equations
+     
+       http://www.khanacademy.org/math/algebra/algebra-matrices/v/matrices--reduced-row-echelon-form-2
+       (solving a 3 X 3)
+     
+       http://www.khanacademy.org/math/algebra/algebra-matrices/v/inverting-matrices--part-3       
+       (applies GJ Elimination to invert a matrix -- a slighly different 
+        operation but the procedure is the same)  
+        
+Bonus
+We are assuming that the square matrices we start with are not singular, (the 
+determinant is 0).  Write the pseudo-code to find the determinant of an n X n
+matrix.
+
+Hints:
+    - If you need more information on this, Google (and Khan Academy) are your
+      friends
+    - Use the Cofactors and Minors approach for any matrix that is bigger than 
+      a 2 X 2.
+    - Recursion is also your friend.  
+    
+        
+

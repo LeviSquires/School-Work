@@ -1,0 +1,34 @@
+C++ Assignment 7 
+
+Classes
+
+1) Design and implement a class called Date that stores a date.  The member 
+   functions should include:
+   - A constructor that takes numbers for year, month and day
+   - A default constructor sets the value to the current date
+   - A toString() function that returns a human readable representation of the 
+     date including the name of the month.
+   - Getter functions for the year, month and day
+   - isLeapYear() predicate as a member function;
+   - isLeapYear(unsigned year) as a static member function
+   - isLeapDay() as a predicate function. 
+2) Write a short program to test the functionality of these member functions.
+
+Points to look out for:
+
+- How you implement the internals of this class is up to you.  There are several 
+  approaches you could use. 
+- Be sure to check for valid input on the constructor that takes the 
+  year/month/date values. This includes leap years.  If your objects get an 
+  invalid date value, simply write the results to the std::cerr object.  We will
+  learn how to deal with errors like this later.
+- To find the current date and some other idea on how to do this, rtfm on the 
+  tm struct (which is a C thing).
+- You are given a basic framework from which to work (Makefile, functions.cpp,
+  test.cpp, prototypes.h).  Add any extra files you need to implement the 
+  solution.
+- You will find that representing month names might be easier if you use an
+  array of const string objects (see the Critter Caretaker example).  
+        
+  
+  

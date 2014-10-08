@@ -1,0 +1,85 @@
+function addVectors (vec1, vec2)
+    //Assume vectors are of the same length
+    for each element i
+        result[i] is assigned vec1[i] + vec2[i] 
+    end for
+    addVectors is result
+end addVectors
+
+
+function multVector (vec, coefficient)
+    for each element i
+        result[i] is assigned vec[i] * coefficient
+    end for
+    multVector is result
+end multVectors
+
+function switchRows(matrix, i, j)
+    temp is assigned matrix[i]
+    matrix[i] is assigned matrix[j]
+    matrix[j] is assigned temp
+end switchRows
+
+
+function GJElimination (matrix)
+    for each row i from 1 to matrix.rows
+        if matrix[i][i] equals 0
+            for each row j from i + 1 to matrix.rows
+                if matrix[j][i] is not equal to 0
+                    swichRows(i, j)
+                    break;
+                end if
+            end for
+        end if
+        matrix[i] is assigned multVector(matrix[i], 1 / matrix[i][i])
+        for each row j from 1 to matrix.rows
+            if i does not equal j
+                if matrix[j][i] is not equal to 0
+                    matrix[j] is assigned addVectors( multVector(matrix[i], -matrix[j][i]), 
+                                                     matrix[j])
+                end if                                     
+            end if
+        end for
+    end for
+end GJElimination 
+
+
+Bonus:
+
+function trimVector(vec, exclude)
+    for each element i
+        if i does not equal exclude
+            push vec[i] on to result
+        end if
+    end for
+    trimVector is result
+end trimVector
+
+
+function minor(matrix, row)
+    //assume matrix is square
+    for each i from 1 matrix.rows
+        if i does not equal row
+            push trimVector(matrix[i], 1) on to result
+        end if 
+    end for
+end minor
+
+function determinant(matrix)
+    //assume matrix is square
+    if matrix.rows is equal to 2
+        determinant is equal to matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1] 
+        return
+    end if    
+    for each row i from 1 to matrix.rows
+        if i is odd
+            determinant is assigned determinant + ((determinant(minor(matrix[i], i)) * matrix[i][1]) 
+        else
+            determinant is assigned determinant - ((determinant(minor(matrix[i], i)) * matrix[i][1])         
+        end if
+    end for
+end determinant
+   
+
+
+    

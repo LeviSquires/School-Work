@@ -1,0 +1,35 @@
+// COMServer.idl : IDL source for COMServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (COMServer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(C21CC855-65F9-49FE-8877-5D51B0EB86CE),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IRandObject : IDispatch{
+	[propget, id(1)] HRESULT GetANum([out, retval] long* pVal);
+};
+[
+	uuid(D5DB5399-5967-4FA5-9F0A-E580E85493C1),
+	version(1.0),
+]
+library COMServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(72018055-8AB0-466C-BB51-E703DB49CB21)		
+	]
+	coclass RandObject
+	{
+		[default] interface IRandObject;
+	};
+};
+

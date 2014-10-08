@@ -1,0 +1,57 @@
+C++ Assignment 8
+
+This is a pseudo-code assignment.
+
+In assignment 7 we were looking at a Date class.  We would want to include a 
+function that would allow us to add (or subtract) month, years or days.  Let us 
+suppose that the functions are:
+
+void AddDays(int days);
+void AddMonths(int months);
+void AddYears(int years);
+
+By adding a negative number, the Date object would go back in time, so one year 
+ago from today would be calcuated:
+
+Date now;
+now.AddYear(-1);
+
+Let us suppose that we are storing our days, months years as these following 
+data members: 
+
+int _years;
+int _months
+int _days;
+
+The implementation for these functions are not trival for the following reasons:
+
+void AddYears(int years);
+- if the day is a leap day (feb 29), a year ahead or behind that is not a leap 
+  year should be feb 28.
+
+void AddMonths(int months)
+- if the month that you are moving too is over January 1, the year has to be 
+  adjusted and the month has to be correct.
+      January 15 minus two months is November 15 of the previous year.
+- if the month you are moving to does not have the day before the move, then 
+  the day needs to be the last day of the month.  You need to account for leap 
+  years
+      August 31 plus one month becomes September 30
+
+void AddDays(int days)
+- if the day that you are moving is in another month, the month has to be 
+  adjusted and the day has to be correct.
+      January 15 plus 21 days is Feb 5.
+- if the day that you are moving too is over January 1, the year has to be 
+  adjusted and the month has to be correct.
+      January 15 minus 21 is Dec 25 of the previous year.
+- Leap years need to be accomodated
+
+
+Write the pseudo-code for these three functions that account for these issues.
+
+
+     
+            
+
+ 

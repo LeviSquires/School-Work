@@ -1,0 +1,35 @@
+C++ Assignment 17
+
+This will not require much of your time, though it may require you to run the sort demo overnight...or maybe more than one night
+ 
+Run all seven sorts in the sort demo program with the following data set sizes:
+ 
+50
+100
+150
+200
+250
+300
+400
+500
+750
+1000
+1250
+1500
+ 
+Run it with a time delay of 1 millisecond.
+ 
+Record the time it took to perform the sort (as displayed above the graphic of 
+the sort) and chart the times each sort took for each size of data set.
+ 
+ 
+1) Chart the values in Microsoft Excel -- a line chart would be best.
+2) Based on the times and time complexity of each algorithm, calculate the 
+approximate times it will take for each sort to deal with the following data set 
+sizes:
+    - 10,000
+    - 1,000,000
+    - 100,000,000
+
+Submission is the Excel spreadsheet.
+ 

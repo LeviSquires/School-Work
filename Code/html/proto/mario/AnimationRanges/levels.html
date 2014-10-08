@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>First Steps in Animation</title>
+		<style type="text/css">
+			canvas
+			{
+				border: thin blue solid;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	  <script type="text/javascript" src="js/ige.js"></script>
+	  <script type="text/javascript" >
+	    $(document).ready(function() {
+        const LEFT_ARROW = 37;
+        const UP_ARROW = 38;
+        const RIGHT_ARROW = 39;
+        const DOWN_ARROW = 40;
+        const SPACE = 32;
+        const FRAME_RATE = 20;
+        const ANIMATION_RATE = 200;	  
+        const SPEED = 3;    
+        
+        const MARIO_HEIGHT = 48;
+        const MARIO_WIDTH = 48;
+        
+        const GRAVITY = 0.2;
+        
+        const JUMP = -9;
+        
+        var canvas = $("#myCanvas");
+        var context = canvas.get(0).getContext("2d");	      
+        var leftKeyDown = false;
+        var rightKeyDown = false;
+		
+        	      
+        window.addEventListener("keydown", keyDownHandler, false);
+        window.addEventListener("keyup", keyUpHandler, false);
+
+        
+        
+        
+        var mario = new InGameEntity("images/Mario.png",
+                                     15, 129, 16, 16,
+                                     (canvas.width() - MARIO_WIDTH) / 2, 
+                                     0, //(canvas.height() - 16) / 2, 
+                                     MARIO_WIDTH, MARIO_HEIGHT);
+                                     
+        var roomFloor = ((canvas.height() - 16) / 2) + mario.getHeight();    
+        
+        mario.setay(GRAVITY);                         
+                                     
+        mario.setRangeFrames("", 0, 1);
+
+        mario.addRange("Small Mario Walk Ahead", 1, 3);
+        mario.addFrame(15, 9, 16, 16);
+        mario.addFrame(15, 49, 16, 16);
+  
+        mario.addRange("Small Mario Walk Right", 3, 5);
+        mario.addFrame(215, 89, 16, 16);
+        mario.addFrame(256, 89, 16, 16);
+                                     
+        mario.addRange("Small Mario Walk Left", 5, 7);
+        mario.addFrame(175, 89, 16, 16);
+        mario.addFrame(135, 89, 16, 16);
+                                     
+        mario.addRange("Small Mario Jump Right", 7, 8);
+        mario.addFrame(335, 89, 16, 16);
+                                   
+        mario.addRange("Small Mario Jump Left", 8, 9);
+        mario.addFrame(55, 89, 16, 16);
+
+	      
+	      animate();
+	      
+        function animate()
+        {
+          setInterval(draw, FRAME_RATE);
+          setInterval(nextFrame, ANIMATION_RATE);
+        };
+        
+        function nextFrame()
+        {
+          mario.nextFrame();
+        }
+        
+        
+        
+        function draw()
+        {
+          
+          mario.update();  
+          
+          if((mario.gety() + mario.getHeight()) > (roomFloor - 2))
+          {
+            mario.sety(roomFloor - mario.getHeight());
+          }
+          else
+          {
+          }
+                               
+          context.clearRect(0, 0, canvas.width(), canvas.height());
+          mario.draw(context);          
+          
+        };
+
+
+
+        function keyDownHandler(event)
+        {
+        //console.log(event);
+         switch(event.keyCode)
+         {
+            case LEFT_ARROW:
+              leftKeyDown = true;
+              mario.setvx(-SPEED);
+              break;
+            case UP_ARROW:
+              break;
+            case RIGHT_ARROW:
+              rightKeyDown = true;
+              mario.setvx(SPEED);
+              break;
+            case DOWN_ARROW:
+              break;
+            case SPACE:
+				mario.setvy(JUMP);
+				
+			break;
+          }
+        };
+        
+        function keyUpHandler(event)
+        {
+        //console.log(event);
+          switch(event.keyCode)
+          {
+            case LEFT_ARROW: //fall-through
+              leftKeyDown = false;
+              mario.setvx(0);
+              break;
+            case RIGHT_ARROW:
+              rightKeyDown = false;
+              mario.setvx(0);
+              break;
+            case UP_ARROW: //fall-through
+            case DOWN_ARROW:
+              break;
+          }
+        };
+        	      
+	      	
+	    });
+	  </script>		
+	</head>
+	<body>
+		<canvas id="myCanvas" width="744" height="448">
+			<!-- Insert fallback content here -->
+		</canvas>
+	</body>
+</html>

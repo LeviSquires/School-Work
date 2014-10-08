@@ -1,0 +1,21 @@
+###########################
+# Makefile for factors program
+###########################
+
+CPP = g++
+CPP_FLAGS = -O2 -c -Wall
+LINK = g++
+LINK_FLAGS = -o 
+TARGET = assignment05
+OBJ_FILES = assignment05.o 
+
+$(TARGET) : $(OBJ_FILES)
+	$(LINK) $(LINK_FLAGS)$(TARGET) $(OBJ_FILES)
+
+assignment05.o : assignment05.cpp
+	$(CPP) $(CPP_FLAGS) assignment05.cpp
+
+clean:
+	rm -f $(OBJ_FILES) $(TARGET)
+	
+

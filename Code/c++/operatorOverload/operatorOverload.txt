@@ -1,0 +1,93 @@
+Date now;
+Date lastWeek;
+
+
+
+if(now == lastWeek)
+bool operator ==(const Date& d1, const Date& d2)
+{
+	return d1._day == d2._day &&
+		   d1._week == d2._week &&
+		   d1._year == d2._year;
+}
+
+if(now != lastWeek)
+bool operator!=(const Date& d1, const Date& d2)
+{
+	return !(d1 == d2);
+}
+
+if(now > lastWeek)
+bool operator >(const Date& d1, const Date& d2)
+{
+	if(d1._year > d2._year)
+	{
+		return true;
+	}
+	if(d1._year < d2._year)
+	{
+		return false;
+	}
+	if(d1._month > d2._month)
+	{
+		return true;
+	}
+	if(d1._month < d2._month)
+	{
+		return false;
+	}
+	if(d1._day > d2._day)
+	{
+		return true;
+	}
+	if(d1._day < d2._day)
+	{
+		return false;
+	}
+}
+
+if(now >= lastWeek)
+bool operator >=(const Date& d1, const Date& d2)
+{
+	return(d1 > d2) || (d1 == d2);
+}
+
+Date copy = ++now;
+//within date class
+Date& operator++();
+
+//outside class
+Date Date::operator ++()
+{
+	addDay(true);
+	return *this;
+}
+
+Date copy = now++;
+//within date class
+Date operator++(int); //include dummy int argument
+
+//outside of date class
+Date operator++(int)
+{
+	Date ret *this;
+	addDay(true);
+	return ret;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

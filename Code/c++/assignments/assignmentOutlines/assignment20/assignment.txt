@@ -1,0 +1,55 @@
+C++ Assignment 20
+
+This is an exercise in RTFM.
+
+Write a C++ program that does the following:
+
+1) Takes one or two command line arguments, ex:
+      c:\> word_count input.txt output.txt
+
+2) Opens an existing text file (input.txt) for reading. If it cannot open the
+   file, the program exits with an appropriate error message.
+
+3) Tries to open a new text file for writing.  If it cannot open this file, the
+   program writes the output to std::cout.    
+
+4) Reads each line of the input file.
+
+5) Pulls out each word from each line, converts that word to all uppercase, and
+   counts the occurrences of each word for the entire file.
+ 
+6) If an output file was opened, the results are to be written to that file.  
+   Otherwise, the results are written to std::cout.
+
+7) Use only standard C functions and C++ classes.  Microsoft loves to add 
+   functions that are 'safer', but it really isn't necessary if you are careful.    
+   
+Subject that might require RTFM:
+- ifstream
+- ofstream
+- Command line arguments to a C++ program
+- the C function strtok(...).  Remember that this function knows nothing about
+  C++, so you may need to use other C string functions -- take the security 
+  warnings seriously and write you code to be secure.  Without using the 
+  Microsoft specific functions.
+  Alternative: look at c++ regular expressions. 
+- the std::map<> template class in STL.
+
+This list is not exhaustive
+
+Hints:
+
+Managing this project will be much easier if you use Visual Studio only to edit 
+the source code and compile and test from the command line.  Those who are used 
+to working with an editor like Ultra Edit and the command line will be at an 
+advantage to those shackled to Visual Studio.
+
+All this code can easily fit into the main() function.  You don't really need to 
+create any classes of your own -- just use what C and C++ provides you.  One
+source file in your submission is all that is really need.
+
+Supplied is a text file to test on and a sample output file. 
+ 
+
+  
+  

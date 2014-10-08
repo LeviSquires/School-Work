@@ -1,0 +1,48 @@
+C++ Assignment 2
+
+Craps is a dice-based gambling game found in casinos and popularized in 20th
+century North America because it requires very little equipment. Very many 
+soldiers during WWII lost their money to many of the floating craps games that 
+sprang up where ever they were stationed.
+
+In a simplified form, the game is played this way:
+
+1) Each player plays indivually against 'the house'.
+2) At the start of the turn, the player makes a bet.  Usually there is a minimum
+   and a maximum set by the house. 
+3) The player rolls a pair of dice one or more times (as required) with the
+   following rules:
+   - If, on the first roll only, the player rolls 7 or 11, the player wins the
+     turn and collects the bet.
+   - If, on the first roll only, the player rolls 2, 3 or 12, the player loses
+     and the house collects the bet.
+   - If the player rolls any other number, that number becomes his 'point'.
+   - The player continues to roll until he:
+       - rolls the same number as his point, in which case he wins the bet, or
+       - rolls a 7, in which he loses the bet.
+       
+Write a program to simulate one turn of craps. Prompt the user for his name (one 
+name only) and the bet amount.  Then simulate the throws of dice required for 
+the turn to be complete. The result should display the winner (the house or the
+player), the amount won, the number of rolls the turn took and the values of
+the dice for each roll.
+
+use the Makefile and the .cpp file in start_files as a beginning for this project.
+
+Use the randgen class as supplied in 
+(London) ftp://10.2.114.47/pub/c++/Supp_material/randgen
+(Kitchener) ftp://10.3.115.16/pub/c++/Supp_material/randgen
+
+Bonus:
+=====
+
+Write another program based on the assignment that automatically runs the same
+play logic and calculates the odds after 10,000 turns at the craps table.  The bonus program should display:
+1) The number of times the simulation was run.
+2) The wins for the player
+3) The wins for the house
+4) The average number of rolls for each turn.
+
+You should write the program in such a way that by making one simple change to a 
+constant, you can run the test for any arbitrary number.
+ 

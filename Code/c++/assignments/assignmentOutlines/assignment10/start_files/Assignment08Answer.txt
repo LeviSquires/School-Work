@@ -1,0 +1,117 @@
+leapday (date)
+if date.day is 29 and day.month is 2 and leapyear(date.year)
+   leapday = true
+else
+   leapday = false
+endif      
+end leapday
+
+
+
+
+maxday (month, year)
+if leapyear(year) and month is 2
+    maxday is assigned 29
+    return;
+endif
+switch on month
+    case 2
+        maxday is assigned 28
+        return;
+    case 1, 3, 5, 7, 8, 10, 12    
+        maxday is assigned 31
+        return;
+    case 4, 6, 9, 11    
+        maxday is assigned 30
+        return;        
+end switch     
+end maxday     
+     
+addDay (forward)
+if forward is true
+    if today.day is less than maxday (today.month, today.year)
+        increment today.day
+    else
+        today.day is assigned to 1
+        increment today.month
+        if today.month is greater than 12
+            today.month is assigned to 1
+            increment today.year
+        endif    
+    endif
+else
+    if today.day is greater than 1
+        decrement day.today
+        addDay is assigned today
+    else    
+        decrement today.month
+        if today.month equals 0
+            today.month is assigned 12
+            decrement today.year
+        end if
+        today.day is assigned maxday (today.month, today.year)
+    endif
+end if
+end addDay
+
+     
+addYears (int years)
+if years is 0
+    return
+endif    
+if today is leapday and (today + years) is not leapday
+   today.day is assigned 28
+endif   
+today.year is assigned today.year + years
+end addYears
+
+     
+addMonths (months)
+if months is 0
+    return
+endif         
+deltayears = months / 12
+deltamonths = months mod 12
+if months is greater than 0
+    if today.month + deltamonths is greater than 12
+        increment deltayears 
+        newmonth is assigned (today.month + deltamonths) - 12
+    else
+        newmonth = today.month + deltamonths
+    endif
+else //months is negative
+    if today.month + deltamonths is less than 1
+        decrement deltayears
+        newmonth is assigned today.month + deltamonths + 12                   
+    else
+        newmonth = today.month + deltamonths
+    endif
+endif
+if today.day is greater than maxday(newmonth, today.year + deltayears)
+   today.day is assigned maxday
+endif
+today.year is assigned to today.year + deltayears
+today.month is assigned newmonth                 
+end addMonths
+
+
+
+addDays (days)
+if days is 0
+    return
+endif         
+if days is less than 0
+   for count from -1 to days decrementing
+       addDay(false)
+   end for
+else   
+   for count from 1 to days 
+       addDay(true)
+   end for
+endif   
+end addDays
+
+
+
+
+        

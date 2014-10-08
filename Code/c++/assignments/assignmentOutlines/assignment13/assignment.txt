@@ -1,0 +1,15 @@
+C++ Assignment 13
+
+Projects Book (the small one), Chapter 11, Exercise 4, page 166.
+
+Note:  Make sure that you call all functions on the objects through a pointer to 
+the base class like this:
+    Weapon* p = &sword;
+    p -> Use();  
+	p = &crossbow;
+	p -> Use();
+
+Build your answer in a Visual Studio 2010 project.
+
+Bonus: Construct a working Unix Makefile for this project.  (Again, watch 
+your line endings.

@@ -1,0 +1,528 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>First Steps in Animation</title>
+		<style type="text/css">
+			canvas
+			{
+				border: thin blue solid;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	  <script type="text/javascript" src="js/ige.js"></script>
+	  <script type="text/javascript" >
+	    $(document).ready(function() {
+        
+		const TILE_WIDTH = 32;
+		const TILE_HEIGHT = 32;
+		
+		var canvas = $("#myCanvas");
+        var context = canvas.get(0).getContext("2d");	      
+	    
+		var tiles = new Array();
+	     
+		//line 0
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										0 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										1 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										2 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);  
+		 
+		var tile = new InGameObject("images/world.png", 
+									96, 0, 16, 16, 
+									3 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									4 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 48, 16, 16, 
+									5 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									6 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									112, 0, 16, 16, 
+									7 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									8 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									128, 0, 16, 16, 
+									9 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									10 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 48, 16, 16, 
+									11 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										12 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										13 * TILE_WIDTH, 0 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		//line 1
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										0 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										1 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										2 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									16, 32, 16, 16, 
+									3 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										4 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										5 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										6 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									16, 32, 16, 16, 
+									7 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										8 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										9 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										10 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+									16, 32, 16, 16, 
+									11 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										12 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										13 * TILE_WIDTH, 1 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		//line 2
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									0 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									96, 16, 16, 16, 
+									1 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									2 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 80, 16, 16, 
+									3 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										4 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										5 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										6 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									0, 64, 16, 16, 
+									7 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									8 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									144, 0, 16, 16, 
+									9 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									10 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									32, 0, 16, 16, 
+									11 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										12 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										13 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  //line 3
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										0 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										1 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										2 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		//mario
+	    var mario = new InGameObject("images/world.png",
+										207, 32, 16, 16,
+										1 * TILE_WIDTH, 2 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+		mario.addFrame(224, 32, 16, 16);
+		
+		var tile = new InGameObject("images/world.png", 
+									64, 16, 16, 16, 
+									3 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										4 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										5 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										6 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									16, 32, 16, 16, 
+									7 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		 var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										8 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										9 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										10 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										11 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										12 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										13 * TILE_WIDTH, 3 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										0 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										1 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		   var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										2 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									0, 64, 16, 16, 
+									3 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									4 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									48, 0, 16, 16, 
+									5 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 32, 16, 16, 
+									6 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									112, 16, 16, 16, 
+									7 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										8 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										9 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									64, 48, 16, 16, 
+									10 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									80, 48, 16, 16, 
+									11 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									96, 48, 16, 16, 
+									12 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										13 * TILE_WIDTH, 4 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										0 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+									0, 0, 16, 16, 
+									1 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 0, 16, 16, 
+									2 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									16, 32, 16, 16, 
+									3 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+									0, 0, 16, 16, 
+									4 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	    tiles.push(tile);
+		var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										5 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										6 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		  var tile = new InGameObject("images/world.png", 
+										0, 16, 16, 16, 
+										7 * TILE_WIDTH, 5 * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
+	      tile.addFrame(16, 16, 16, 16);
+		  tile.addFrame(32, 16, 16, 16);
+		  tile.addFrame(48, 16, 16, 16);
+		  tiles.push(tile);
+		
+		
+		
+		
+		
+		animate();
+	      
+        function animate()
+        {
+          setInterval(draw, 150);
+        };
+        
+		var frameCounter = 0;
+		
+        function draw()
+        {
+			++frameCounter;
+			if((frameCounter % 2) == 0)
+			{
+				for(var i = 0; i < tiles.length; ++i)
+				{
+					tiles[i].nextFrame();
+				};
+				tile.nextFrame();
+				mario.update();
+			}
+			for( var i = 0; i < tiles.length; ++i)
+				{
+					tiles[i].update();
+				};
+			
+			
+			
+			context.clearRect(0, 0, canvas.width(), canvas.height());
+			for( var i = 0; i < tiles.length; ++i)
+				{
+					tiles[i].draw(context);
+				};
+				mario.draw(context);
+          
+        };
+        	      
+	      	
+	    });
+	  </script>		
+	</head>
+	<body>
+		<canvas id="myCanvas" width="744" height="448">
+			<!-- Insert fallback content here -->
+		</canvas>
+	</body>
+</html>

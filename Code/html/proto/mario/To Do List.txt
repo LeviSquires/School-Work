@@ -1,0 +1,34 @@
+##################################################################################
+##########								##########
+##########	Please write your name next to the task.		##########
+##########	You may add a task but not remove one.			##########
+##########	Add brief description of what needs to be done		##########
+##########	if finished, add --- to the begining and end.		##########
+##########	The priority is denoted by symbols as follows:		##########
+##########	# Missing Feature					##########
+##########	? Misc / other						##########
+##########	@ bug							##########
+##########	^ High priority						##########
+##########	! Medium priority					##########
+##########	_ low priority						##########
+##########								##########
+##################################################################################
+
+---__# life count (DONE) ###### Adan #######---
+__# timer
+__# power up block / spawn
+__# moving spike / thwomp enemy(levi)
+!!# mario states
+!!# run / P bar
+!!# game states
+!!# load new area
+^^# dry bones enemy ###### Adan #######
+^^# final boss
+^^# match game
+__@ final position after stopped scrolling
+---^^@ collision while scrolling (DONE) ###### Adan #######---
+__? animate final boss(levi)
+!!? Finish placing world objects of Area 1
+^^? Build area2
+^^? build area3
+^^? build final boss area

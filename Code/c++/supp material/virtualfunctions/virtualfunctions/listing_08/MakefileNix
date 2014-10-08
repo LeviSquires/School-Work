@@ -1,0 +1,25 @@
+#############################################################################
+# Makefile for building war program Unix/Mac  (GNU C++ Compiler)
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = war
+
+OBJECTS = war.o weapons.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(LINKFLAGS) $(TARGET) $(OBJECTS)
+	
+war.o : war.cpp
+	$(CXX) $(CXXFLAGS)  war.cpp 
+	
+weapons.o : weapons.cpp
+	$(CXX) $(CXXFLAGS)  weapons.cpp
+
+clean:
+    rm -f *.o $(TARGET)

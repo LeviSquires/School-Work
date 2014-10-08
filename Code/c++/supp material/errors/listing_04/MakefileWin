@@ -1,0 +1,22 @@
+#############################################################################
+# Makefile for building exception program on Windows (MS compiler)
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = cl
+CXXFLAGS      = -EHsc -c -O2 -W4
+LINK          = link
+LINKFLAGS     = -OUT:
+TARGET        = exception.exe
+
+OBJECTS = exception.obj 
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(LINKFLAGS)$(TARGET) $(OBJECTS)
+	
+exception.obj : exception.cpp
+	$(CXX) $(CXXFLAGS)  exception.cpp 
+
+clean:
+	del *.obj *.exe

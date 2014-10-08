@@ -1,0 +1,344 @@
+//Poker hand evaluation - Sorted
+
+int CompareCUES(const CUE& c1, const CUE& c2)
+{
+	//Straight flush check
+	bool f1 = isFlush(c1);
+	bool f2 = isFlush(c2);
+	bool st1 = isStraight(c1);
+	bool st2 = isStraight(c2);
+	
+	if(f1 == true && st1 == true) //c1 is a straight flush
+	{
+		if(f2 && st2) //c2 is a straight flush
+		{
+			return compareStaights(c1, c2);
+		}
+		return 1;
+	}
+	if(f2 && st2)
+	{
+		return -1;
+	}
+	
+	//Four of a kind check
+	bool q1 = isQuad(c1);
+	bool q2 = isQuad(c2);
+	if(q1)
+	{
+		if(q2)
+		{
+			return compareQuads(c1, c2);
+		}
+		return 1;
+	}
+	if(q2)
+	{
+		return -1;
+	}
+	
+	//boat(full house) check
+	bool boat1 = isBoat(c1);
+	bool boat2 = isBoat(c2);
+	if(boat1)
+	{
+		if(boat2)
+		{
+			return compareBoats(c1, c2)
+		}
+		return 1;
+	}
+	if(boat2)
+	{
+		return -1;
+	}
+	
+	//flush check
+	if(f1)
+	{
+		if(f2)
+		{
+			return compareFlushes(c1, c2)
+		}
+		return 1;
+	}
+	if(f2)
+	{
+		return -1;
+	}
+	
+	//straight check
+	if(st1)
+	{
+		if(st2)
+		{
+			return compareStraights(c1, c2)
+		}
+		return 1;
+	}
+	if(st2)
+	{
+		return -1;
+	}
+	
+	//trips(3 of a kind) check
+	bool trips1 = isTrips(c1);
+	bool trips2 = isTrips(c2);
+	if(trips1)
+	{
+		if(trips2)
+		{
+			return comapreTrips(c1, c2);
+		}
+		return 1;
+	}
+	if(trips2)
+	{
+		return -1;
+	}
+	
+	//two of a kind
+	bool twop1 = isTwoPair(c1);
+	bool twop2 = isTwoPair(c2);
+	if(twop1)
+	{
+		if(twop2)
+		{
+			return compareTwoPairs(c1, c2);
+		}
+		return 1;
+	}
+	if(twop2)
+	{
+		return -1;
+	}
+	
+	//One pair check
+	bool pair1 = isPair(c1);
+	bool pair2 = isPair(c2);
+	if(pair1)
+	{
+		if(pair2)
+		{
+			return comparePairs(c1, c2);
+		}
+		return 1;
+	}
+	if(pair2)
+	{
+		return -1;
+	}
+	return compareKickers(c1, c2);
+}
+
+int compareKickers(const CUE& c1, const CUE& c2)
+{
+	for(int i = 4; i >= 0; --i)
+	{
+		if(c1[i].GetPip() > c2[i].GetPip())
+		{
+			return 1;
+		}
+		if(c1[i].GetPip() < c2[i].GetPip())
+		{
+			return -1;
+		}
+	}
+	return 0;
+}
+
+bool isFlush(const CUE& c)
+{
+	return (c[0].GetSuit() == c[1].GetSuit()) &&
+		   (c[0].GetSuit() == c[2].GetSuit()) &&
+		   (c[0].GetSuit() == c[3].GetSuit()) &&
+		   (c[0].GetSuit() == c[4].GetSuit());
+}
+
+bool isStraight(const CUE& c)
+{
+	if(isWheelStraight(c))
+	{
+		return true;
+	}
+	Card::Pip p = c[0].GetPip();
+	for(unsigned i = 1; i < 5; ++i)
+	{
+		if(p != c[i].GetPip())
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool isWheelStraight(const CUE& c)
+{
+	return (c[0].GetPip() == _2) &&
+		   (c[1].GetPip() == _3) &&
+	       (c[2].GetPip() == _4) &&
+	       (c[3].GetPip() == _5) &&
+	       (c[4].GetPip() == _A);
+}
+
+int compareStraights(const CUE& c1, const CUE& c2)
+{
+	bool w1 = isWheelStraight(c1);
+	bool w2 = isWheelStraight(c2);
+	if(w1)
+	{
+		if(w2)
+		{
+			return 0;
+		}
+		return -1;
+	}
+	if(w2)
+	{
+		return 1;
+	}
+	if(c1[0].GetPip() < c2[0].GetPip())
+	{
+		return -1;
+	}
+	if(c1[0].GetPip() > c2[0].GetPip())
+	{
+		return 1;
+	}
+	return 0;
+	
+}
+
+bool isQuad(const CUE& c)
+{
+	return (c[0].GetPip() == c[3].GetPip()) ||
+		   (c[1].GetPip() == c[4].GetPip());
+}
+
+int compareQuads(const CUE& c1, const CUE& c2)
+{
+	if(c1[2].GetPip() < c2[2].GetPip())
+	{
+		return 1;
+	}
+	if(c1[2].GetPip() > c2[2].GetPip())
+	{
+		return -1;
+	}
+	return compareKickers(c1, c2);
+}
+
+bool isBoat(const CUE& c)
+{
+	return (c[0].GetPip == c[2].getPip() && c[3].GetPip() == c[4].GetPip()) ||
+		   (c[0].GetPip == c[1].getPip() && c[2].GetPip() == c[4].GetPip());
+}
+
+int compareBoats(const CUE& c1, const CUE& c2)
+{
+	return compareQuads(c1, c2);
+}
+
+int compareFlushes(const CUE& c1, const CUE& c2)
+{
+	return compareKickers(c1, c2);
+}
+
+bool isTrips(const CUE& c)
+{
+	return (c[2].GetPip() == c[4].GetPip()) ||
+		   (c[0].GetPip() == c[2].GetPip());
+}
+
+int compareTrips(const CUE& c1, const CUE& c2)
+{
+	return compareQuads(c1, c2);
+}
+
+bool isTwoPair(const CUE& c)
+{
+	return (c[0].GetPip() == c[1].GetPip() && c{2}.GetPip() == c[3].GetPip()) ||
+		   (c[0].GetPip() == c[1].GetPip() && c{3}.GetPip() == c[4].GetPip()) ||
+		   (c[1].GetPip() == c[2].GetPip() && c{3}.GetPip() == c[4].GetPip());
+}		  
+
+int compareTwoPairs(const CUE& c1, const CUE& c2)
+{
+	if(c1[3].GetPip() < c2[3].GetPip())
+	{
+		return -1;
+	}
+	if(c1[3].GetPip() > c2[3].GetPip())
+	{
+		return 1;
+	}
+	if(c1[1].GetPip() < c2[1].GetPip())
+	{
+		return -1;
+	}
+	if(c1[1].GetPip() > c2[1].GetPip())
+	{
+		return 1;
+	}
+	return compareKickers(c1, c2)
+}
+
+bool isPair(const CUE& c1, const CUE& c2)
+{
+	return (c[0].getPip() == c[1].GetPip()) ||
+		   (c[1].getPip() == c[2].GetPip()) ||
+		   (c[2].getPip() == c[3].GetPip()) ||
+		   (c[3].getPip() == c[4].GetPip());
+}
+
+Card::Pip GetPipValueOfOneHand(const CUE& c)
+{
+	if(c[0].GetPip() == c[1].GetPip())
+	{
+		return c[0].GetPip();
+	}
+	if(c[1].GetPip() == c[2].GetPip())
+	{
+		return c[1].GetPip();
+	}
+	if(c[2].GetPip() == c[3].GetPip())
+	{
+		return c[2].GetPip();
+	}
+	if(c[3].GetPip() == c[4].GetPip())
+	{
+		return c[3].GetPip();
+	}
+	Throw std::logic_error("calling get pip of one hand on a hand that is not a one pair.")
+	return _A;
+}
+
+int comparePairs(const CUE& c1, const CUE& c2)
+{
+	if(GetPipValueOfOneHand(c1) < GetPipValueOfOneHand(c2))
+	{
+		return -1;
+	}
+	if(GetPipValueOfOneHand(c1) > GetPipValueOfOneHand(c2))
+	{
+		return 1;
+	}
+	return compareKickers(c1, c2);
+}
+
+bool isFlush(const CUE& c);
+bool isStraight(const CUE& c);
+int compareStraights(const CUE& c1, const CUE& c2);
+bool isQuad(const CUE& c);
+int compareQuads(const CUE& c1, const CUE& c2);
+bool isBoat(const QUE& c);
+int compareBoats(const CUE& c1, const CUE& c2);
+int compareFlushes(const CUE& c1, const CUE& c2);
+bool isTrips(const QUE& c);
+int compareTrips(const CUE& c1, const CUE& c2);
+bool isTwoPair(const CUE& c);
+int compareTwoPairs(const CUE& c1, const CUE& c2);
+bool isPair(const QUE& c);
+int comparePairs(const CUE& c1, const CUE& c2);
+int compareKickers(const CUE& c1, const CUE& c2);
+bool isWheelStraight(const CUE& c);

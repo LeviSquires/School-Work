@@ -1,0 +1,22 @@
+#############################################################################
+# Makefile for building errorstates program Unix/Mac  (GNU C++ Compiler)
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = errorstates
+
+OBJECTS = errorstates.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(LINKFLAGS) $(TARGET) $(OBJECTS)
+	
+errorstates.o : errorstates.cpp
+	$(CXX) $(CXXFLAGS)  errorstates.cpp 
+
+clean:
+    rm -f *.o $(TARGET) *.core

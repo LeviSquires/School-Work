@@ -1,0 +1,23 @@
+#############################################################################
+# Makefile for building: list program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = clang++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = clang++
+LINKFLAGS     =  -o 
+TARGET        = list
+
+OBJECTS =  main.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+main.o : main.cpp
+	$(CXX) $(CXXFLAGS)  main.cpp
+	
+	
+clean:
+	rm -f $(TARGET) $(OBJECTS) 

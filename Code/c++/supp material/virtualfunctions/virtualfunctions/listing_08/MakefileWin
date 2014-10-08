@@ -1,0 +1,25 @@
+#############################################################################
+# Makefile for building war program on Windows (MS compiler)
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = cl
+CXXFLAGS      = -EHsc -c -O2 -W4
+LINK          = link
+LINKFLAGS     = -OUT:
+TARGET        = war.exe
+
+OBJECTS = war.obj weapons.obj
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(LINKFLAGS)$(TARGET) $(OBJECTS)
+	
+war.obj : war.cpp
+	$(CXX) $(CXXFLAGS)  war.cpp 
+	
+weapons.obj : weapons.cpp
+	$(CXX) $(CXXFLAGS)  weapons.cpp
+
+clean:
+    del *.obj *.exe

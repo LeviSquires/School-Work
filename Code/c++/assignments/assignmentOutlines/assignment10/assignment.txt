@@ -1,0 +1,43 @@
+C++ Assignment 10
+
+
+This is an extension of the Date class we have been working on.
+
+1) Given the source code in the start_files directory and the pseudo-code 
+   supplied in Assignment08Answer.txt, complete the following functions:
+
+- static bool isLeapDay(int day, int month, int year); 
+    This predicate will return true if the date represented by the arguments is  
+    a leapday, false otherwise.
+
+- void addDay(bool forward);
+    This function will change a date by one day: forward if the argument is true
+    and backward if false.
+
+- static int maxDay(int month, int year);
+    This function will return the maximum day for the month and the year of the 
+    arguments
+        
+- void addYears(int years);
+    This function will add years to the date object.  If the argument is 
+    negative, the modified date is before the function is called.
+    
+- void addMonths(int months);    
+    This function will add months to the date object.  If the argument is 
+    negative, the modified date is before the function is called.
+
+- void addDays(int days);   
+    This function will add days to the date object.  If the argument is 
+    negative, the modified date is before the function is called.
+
+The code in test.cpp will test to see if your work is correct.  Compiling and 
+running the existing program will cause incorrect data to be displayed.
+
+NOTE -- VERY IMPORTANT:  Only modify date.cpp and only the functions indicated.
+
+2) Build a new Visual Studio 2010 project and solution for this assignment.
+
+NOTE: Submit you source code, readme.txt, the .sln file and the .vcxproj file.
+
+
+

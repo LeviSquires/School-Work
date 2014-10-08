@@ -1,0 +1,49 @@
+C++ Assignment 18 
+
+1) Given the C++ class for an ordered binary tree which we developed in class, 
+   convert this class to a class template.  The starting project is in the
+   start_files directory.
+
+2) Test the template by using the following code in the main function:
+
+
+int main()
+{
+
+	RandGen rg;
+	Tree<double> tree;
+	for(unsigned i = 0; i < 10; ++i)
+	{
+		tree.Insert(rg.getNormalized());
+	}
+
+	std::cout << "Pre Order:\n";
+	tree.PreOrder(std::cout);
+	std::cout << "\nPost Order:\n";
+	tree.PostOrder(std::cout);
+	std::cout << "\nIn Order:\n";
+	tree.InOrder(std::cout);
+	std::cout << std::endl;
+
+
+	return 0;
+}
+
+3) Given these three transversals on the same tree, draw the complete tree:
+      Pre Order:
+      57      41      8       31      56      61      70      66      78      88
+      Post Order:
+      31      8       56      41      66      88      78      70      61      57
+      In Order:
+      8       31      41      56      57      61      66      70      78      88
+
+4) Implement a copy constructor and assignment operator in the Tree 
+   template so objects are deep copied.  
+   
+   Hint: Implement a function: 
+       void CloneChildren(const TreeNode* p); 
+   in the TreeNode class that clones the left and right children of the TreeNode
+   passed into the function, attaches the clone to the implied object then calls 
+   itself recursively on its children.  
+
+

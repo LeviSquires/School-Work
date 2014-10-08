@@ -1,0 +1,28 @@
+#############################################################################
+# Makefile for building: cards program
+#############################################################################
+
+####### Compiler, tools and options
+
+CXX           = g++
+CXXFLAGS      = -c -O2 -Wall
+LINK          = g++
+LINKFLAGS     = -o 
+TARGET        = cards
+
+OBJECTS = cards.o randgen.o functions.o
+
+$(TARGET) : $(OBJECTS)
+	$(LINK) $(OBJECTS) $(LINKFLAGS)$(TARGET)
+	
+cards.o : cards.cpp
+	$(CXX) $(CXXFLAGS)  cards.cpp 
+	
+randgen.o : randgen.cpp
+	$(CXX) $(CXXFLAGS)  randgen.cpp
+
+functions.o : functions.cpp
+	$(CXX) $(CXXFLAGS)  fucntions.cpp
+
+clean:
+	rm -rf $(OBJECTS) $(TARGET) *.core

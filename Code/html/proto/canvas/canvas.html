@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title> Canvas Introduction</title>
+	<style>
+		canvas
+		{
+			border: thin blue solid;
+		}
+		*//for all elements
+		{
+			margin: 0;
+			padding: 0;
+		}
+		html, body
+		{
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+	<script type = "text/javascript" src ="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			//console.log("doucment loaded");
+			var canvas = $("#myCanvas");
+			var context = canvas.get(0).getContext("2d");
+			canvas.attr("width", $(window).get(0).innerWidth);
+			canvas.attr("height", $(window).get(0).innerHeight);
+			context.fillRect(0, 0, canvas.width(), canvas.height());
+		/*	context.strokeRect(100, 100 , 200, 100);
+			context.beginPath();//starts path
+			context.moveTo(40, 40);//moves to path origin
+			context.lineTo(400, 40);// draws a line to destination
+			context.closePath();//ends path
+			context.stroke();//outlines path
+			
+			//circles
+			context.beginPath();//begins path
+			context.arc(230, 90, 50, 0, Math.PI*2, false);// draws a full circle
+			context.closePath();//ends path
+			context.fill();//fills circle
+			
+			//line width and colour change
+			context.lineWidth = 15;
+			context.strokeStyle = "rgb(255, 0, 0)";
+			context.strokeRect(40, 40, 100, 100);
+			
+			//text
+			var text = "text in canvas";
+			context.font = "30px serif";//changes size and font
+			context.fillText(text, 40, 350);
+			//context.clearRect(0, 0, 500, 500); // clears part/entire canvas
+			//context.clearRect(0, 0, canvas.width(), canvas.height());// clears canvas even if you don't know it's dimensions.
+		*/	
+			
+		});
+	</script>
+	
+	</head>
+	<body>
+		<canvas id = "myCanvas" height="500" width="500">
+		
+		</canvas>
+	</body>
+	
+</html>

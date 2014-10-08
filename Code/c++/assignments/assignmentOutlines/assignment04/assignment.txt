@@ -1,0 +1,20 @@
+C++ Assignment 4 
+
+Write a program that includes and tests the following functions:
+1) int askForInt(const string& prompt, int high, int low);
+   This function prompts the user with the string object that is passed into it 
+   and returns the value that the user enters.  This function must handle any 
+   sort of invalid entry from the user and be within the range described by the
+   the values high and low.
+2) bool isPrime(unsigned);
+   This predicate returns true is the argument is a prime number (evenly 
+   divisible only by itself and 1, false otherwise.
+3) vector<unsigned> factors(unsigned);
+   This function returns a vector of unsigned ints that is the set of
+   prime numbers that are the factors of the number entered.
+   Ex: factor(294) returns the vector [2, 3, 7, 7]
+
+Write a program that is interactive in that it will continue to prompt the 
+user to enter a new number to factor and display it until the user wants to quit.
+
+       

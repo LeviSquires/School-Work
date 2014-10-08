@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+
+
+<script type = "text/javascript" src = "js/jquery.min.js"></script>
+<script type = "text/javascript" src = "js/waypoints.js"></script>
+<script type = "text/javascript">
+$(document).ready(function()
+{ 
+	const KEY_LEFT = 37;
+	const KEY_RIGHT = 39;
+	const KEY_UP = 38;
+	const KEY_DOWN = 40;
+	const xpos = 32;
+	const ypos = 32;
+	var marioIndex = 0;
+	var wayPoints = new Array();
+	window.addEventListener("keydown", keyDownHandler, false);
+	function keyDownHandler(event)
+	{
+		console.log(event.keyCode);
+		switch(event.keyCode)
+		{
+			case KEY_LEFT:
+			console.log("left arrow key pressed.");
+			break;
+			case KEY_RIGHT:
+			console.log("right arrow key pressed.");
+			break;
+			case KEY_UP:
+			console.log("up arrow key pressed.");
+			break;
+			case KEY_DOWN:
+			console.log("down arrow key pressed.");
+			break;
+		}
+	
+		
+		var newIndex = wayPoints[marioIndex].getNextWayPoint(event.keyCode);
+			if(newIndex == -1)
+			{
+				console.log("no path in this direction");
+			}
+			else
+			{
+				marioIndex = newIndex;
+			}
+	};
+
+//waypoint 0
+var wp = new wayPoint(1 * xpos, 8 * ypos);
+var p = new Path(0, 1, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 1
+wp = new wayPoint(3 * xpos, 8 * ypos)
+p = new Path(1, 6, KEY_UP);
+wp.addPath(p);
+p = new Path(1, 0, KEY_LEFT);
+wp.addPath(p);
+p = new Path(1, 2, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 2
+wp = new wayPoint(5 * xpos, 8 * ypos)
+p = new Path(2, 1, KEY_LEFT);
+wp.addPath(p);
+p = new Path(2, 3, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 3
+wp = new wayPoint(7 * xpos, 8 * ypos)
+p = new Path(3, 2, KEY_LEFT);
+wp.addPath(p);
+p = new Path(3, 4, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 4
+wp = new wayPoint(7 * xpos, 6 * ypos)
+p = new Path(4, 3, KEY_DOWN);
+wp.addPath(p);
+p = new Path(4, 5, KEY_LEFT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 5
+wp = new wayPoint(6 * xpos, 5 * ypos)
+p = new Path(5, 4, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 6
+wp = new wayPoint(3 * xpos, 6 * ypos)
+p = new Path(6, 1, KEY_DOWN);
+wp.addPath(p);
+p = new Path(6, 7, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 7
+wp = new wayPoint(3 * xpos, 4 * ypos)
+p = new Path(7, 6, KEY_DOWN);
+wp.addPath(p);
+p = new Path(7, 8, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 8
+wp = new wayPoint(3 * xpos, 2 * ypos)
+p = new Path(8, 7, KEY_DOWN);
+wp.addPath(p);
+p = new Path(8, 9, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 9
+wp = new wayPoint(5 * xpos, 3 * ypos)
+p = new Path(9, 8, KEY_LEFT);
+wp.addPath(p);
+p = new Path(9, 10, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 10
+wp = new wayPoint(5 * xpos, 0 * ypos)
+p = new Path(10, 11, KEY_LEFT);
+wp.addPath(p);
+p = new Path(10, 12, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 11
+wp = new wayPoint(3 * xpos, 0 * ypos)
+p = new Path(11, 10, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 12
+wp = new wayPoint(7 * xpos, 0 * ypos)
+p = new Path(12, 10, KEY_LEFT);
+wp.addPath(p);
+p = new Path(12, 13, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 13
+wp = new wayPoint(7 * xpos, 2 * ypos)
+p = new Path(13, 12, KEY_UP);
+wp.addPath(p);
+p = new Path(13, 14, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 14
+wp = new wayPoint(7 * xpos, 4 * ypos)
+p = new Path(14, 13, KEY_UP);
+wp.addPath(p);
+p = new Path(14, 15, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 15
+wp = new wayPoint(9 * xpos, 4 * ypos)
+p = new Path(15, 14, KEY_LEFT);
+wp.addPath(p);
+p = new Path(15, 21, KEY_RIGHT);
+wp.addPath(p);
+p = new Path(15, 16, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 16
+wp = new wayPoint(9 * xpos, 2 * ypos)
+p = new Path(16, 17, KEY_UP);
+wp.addPath(p);
+p = new Path(16, 15, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 17
+wp = new wayPoint(9 * xpos, 0 * ypos)
+p = new Path(17, 18, KEY_RIGHT);
+wp.addPath(p);
+p = new Path(17, 16, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 18
+wp = new wayPoint(11 * xpos, 0 * ypos)
+p = new Path(18, 17, KEY_LEFT);
+wp.addPath(p);
+p = new Path(18, 19, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 19
+wp = new wayPoint(11 * xpos, 2 * ypos)
+p = new Path(19, 18, KEY_UP);
+wp.addPath(p);
+p = new Path(19, 20, KEY_RIGHT);
+wp.addPath(p);
+p = new Path(19, 21, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 20
+wp = new wayPoint(13 * xpos, 2 * ypos)
+p = new Path(20, 19, KEY_LEFT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 21
+wp = new wayPoint(11 * xpos, 4 * ypos)
+p = new Path(21, 15, KEY_LEFT);
+wp.addPath(p);
+p = new Path(21, 22, KEY_RIGHT);
+wp.addPath(p);
+p = new Path(21, 23, KEY_DOWN);
+wp.addPath(p);
+p = new Path(21, 19, KEY_UP);
+wp.addPath(p);
+
+wayPoints.push(wp);
+
+//waypoint 22
+wp = new wayPoint(13 * xpos, 4 * ypos)
+p = new Path(22, 21, KEY_LEFT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 23
+wp = new wayPoint(11 * xpos, 6 * ypos)
+p = new Path(23, 22, KEY_UP);
+wp.addPath(p);
+p = new Path(23, 24, KEY_RIGHT);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 24
+wp = new wayPoint(13 * xpos, 6 * ypos)
+p = new Path(24, 23, KEY_LEFT);
+wp.addPath(p);
+p = new Path(24, 25, KEY_DOWN);
+wp.addPath(p);
+wayPoints.push(wp);
+
+//waypoint 25
+wp = new wayPoint(13 * xpos, 8 * ypos)
+p = new Path(25, 24, KEY_UP);
+wp.addPath(p);
+wayPoints.push(wp);
+
+});
+</script>
+
+
+</html>
+
+
+

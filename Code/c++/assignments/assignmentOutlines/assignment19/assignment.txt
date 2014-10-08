@@ -1,0 +1,52 @@
+C++ Assignment 19
+
+Consider how we add two numbers:
+ 987
+1142
+----
+ 
+1) We line up two numbers so the units are on top of each other.
+2) Starting at the least significant digit, we add the digits of the two numbers 
+   and put the result underneath. 
+ 987
+1142
+----
+   9
+   
+3) If the result of an addition is ten or greater, subtract ten
+   and carry-over one to the next digit.    
+
+ 1
+ 987
+1142
+----
+  29
+  
+4) We iterate until all digits have been added.
+
+11
+ 987
+1142
+----
+2129
+
+The start_files project includes the askForInt() function that prompts for two 
+integers.  It includes a function showIntBits(), which shows the bit pattern for 
+the int argument. 
+
+Finish a C++ program that prompts the user for two integers and performs 
+addition by applying the rules of addition and the bitwise operations to each 
+binary digit.  Start from the least significant digits of the operands and
+iterate to the most significant.
+
+What you are doing is applying the same rules for addition that already exist inside a 
+computer's CPU.
+
+Hint: Make sure you fully understand what the function showIntBits() is doing 
+and how it works.
+
+Note: Assuming that a byte is 8 bits in size will lead to significant grade 
+deductions
+
+
+        

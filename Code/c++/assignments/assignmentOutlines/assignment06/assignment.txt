@@ -1,0 +1,31 @@
+C++ Assignment 6
+
+Projects Book (the small one) Chapter 5, Project 4.  (pg 55-56)
+
+Be sure to represent the deck that you manipulate as a vector of pointers to 
+const string objects. The cards will be stored as a global array of constant
+strings, but the manipulation of the cards needs to be through the vector of
+pointers to those cards.  
+
+Important considerations (in other words, not following these points will lead 
+to grade deductions):
+ 
+1) Be sure that your solution manipulates pointers to strings and not the   
+   strings themselves.
+2) You have to seed a random number generator.  Make sure you do.
+3) Use the start files with the given make file(s).
+4) The random_shuffle() function is your friend. 
+5) Display the cards as 4 rows of 13 cards
+6) Store your pointers in a vector, not an array like Dawson says.
+
+Bonus
+1) Use the RandGen class and hook it into random_shuffle().  The RandGen class
+   is included in the Makefile for your convenience.
+   
+ 
+Welcome to pointer land.
+ 
+
+
+
+       
